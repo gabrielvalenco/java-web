@@ -173,8 +173,8 @@ public class LoanServlet extends HttpServlet {
                     loan.setUser(user);
                     loan.setBook(book);
                     loan.setLoanDate(loanDate);
-                    loan.setDueDate(dueDate);
-                    loan.setReturnDate(returnDate);
+                    // Usando dueDate como data esperada de devolução
+                    loan.setReturnDate(dueDate);
                     
                     if ("update".equals(action)) {
                         loanDAO.update(loan);
@@ -183,10 +183,14 @@ public class LoanServlet extends HttpServlet {
                     }
                     
                     response.sendRedirect(request.getContextPath() + "/loans");
-                } catch (IllegalArgumentException e) {
-                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid date format");
-                } catch (NumberFormatException e) {
-                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid ID format");
+                } catch (IllegalArgumentException | NumberFormatException e) {
+                    // NumberFormatException é subclasse de IllegalArgumentException
+                    // Unificando tratamento de erro para ambas exceções
+                    if (e instanceof NumberFormatException) {
+                        response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid ID format");
+                    } else {
+                        response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid date format");
+                    }
                 }
             } else {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing required parameters");
