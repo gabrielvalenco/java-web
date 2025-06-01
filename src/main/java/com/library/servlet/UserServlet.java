@@ -3,11 +3,11 @@ package com.library.servlet;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.library.dao.UserDAO;
 import com.library.model.User;
@@ -54,7 +54,7 @@ public class UserServlet extends HttpServlet {
                 } else {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 }
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | IllegalArgumentException e) {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             }
         } else if (pathInfo.startsWith("/delete/")) {
@@ -67,7 +67,7 @@ public class UserServlet extends HttpServlet {
                 } else {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 }
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | IllegalArgumentException e) {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             }
         } else if (pathInfo.startsWith("/view/")) {
@@ -81,7 +81,7 @@ public class UserServlet extends HttpServlet {
                 } else {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 }
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | IllegalArgumentException e) {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             }
         } else {
@@ -114,10 +114,9 @@ public class UserServlet extends HttpServlet {
                                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
                                 return;
                             }
-                        } catch (NumberFormatException e) {
-                            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-                            return;
-                        }
+                        } catch (NumberFormatException | IllegalArgumentException e) {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            }
                     } else {
                         response.sendError(HttpServletResponse.SC_BAD_REQUEST);
                         return;
@@ -146,3 +145,5 @@ public class UserServlet extends HttpServlet {
         }
     }
 }
+
+
