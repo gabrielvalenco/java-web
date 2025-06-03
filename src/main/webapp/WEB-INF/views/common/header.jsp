@@ -18,7 +18,7 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/">
                 <i class="fas fa-book-open me-2"></i>Biblioteca
