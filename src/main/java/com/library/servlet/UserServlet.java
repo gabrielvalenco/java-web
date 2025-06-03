@@ -54,7 +54,7 @@ public class UserServlet extends HttpServlet {
                 } else {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 }
-            } catch (NumberFormatException | IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             }
         } else if (pathInfo.startsWith("/delete/")) {
@@ -67,7 +67,7 @@ public class UserServlet extends HttpServlet {
                 } else {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 }
-            } catch (NumberFormatException | IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             }
         } else if (pathInfo.startsWith("/view/")) {
@@ -81,7 +81,7 @@ public class UserServlet extends HttpServlet {
                 } else {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 }
-            } catch (NumberFormatException | IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             }
         } else {
@@ -114,9 +114,10 @@ public class UserServlet extends HttpServlet {
                                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
                                 return;
                             }
-                        } catch (NumberFormatException | IllegalArgumentException e) {
-                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-            }
+                        } catch (IllegalArgumentException e) {
+                            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                            return;
+                        }
                     } else {
                         response.sendError(HttpServletResponse.SC_BAD_REQUEST);
                         return;

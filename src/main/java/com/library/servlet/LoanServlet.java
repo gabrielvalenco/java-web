@@ -183,14 +183,10 @@ public class LoanServlet extends HttpServlet {
                     }
                     
                     response.sendRedirect(request.getContextPath() + "/loans");
-                } catch (IllegalArgumentException | NumberFormatException e) {
-                    // NumberFormatException é subclasse de IllegalArgumentException
-                    // Unificando tratamento de erro para ambas exceções
-                    if (e instanceof NumberFormatException) {
-                        response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid ID format");
-                    } else {
-                        response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid date format");
-                    }
+                } catch (IllegalArgumentException e) {
+                    // IllegalArgumentException already includes NumberFormatException
+                    // Using unified error handling
+                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid format");
                 }
             } else {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing required parameters");
