@@ -10,16 +10,18 @@ public class Loan {
     private Book book;
     private User user;
     private Date loanDate;
+    private Date dueDate;
     private Date returnDate;
     private boolean returned;
     
     public Loan() {
     }
     
-    public Loan(Book book, User user, Date loanDate, Date returnDate) {
+    public Loan(Book book, User user, Date loanDate, Date dueDate, Date returnDate) {
         this.book = book;
         this.user = user;
         this.loanDate = loanDate;
+        this.dueDate = dueDate;
         this.returnDate = returnDate;
         this.returned = false;
     }
@@ -57,6 +59,14 @@ public class Loan {
         this.loanDate = loanDate;
     }
 
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
     public Date getReturnDate() {
         return returnDate;
     }
@@ -76,6 +86,6 @@ public class Loan {
     @Override
     public String toString() {
         return "Loan [id=" + id + ", book=" + book.getTitle() + ", user=" + user.getName() + 
-               ", loanDate=" + loanDate + ", returnDate=" + returnDate + ", returned=" + returned + "]";
+               ", loanDate=" + loanDate + ", dueDate=" + dueDate + ", returnDate=" + returnDate + ", returned=" + returned + "]";
     }
 }

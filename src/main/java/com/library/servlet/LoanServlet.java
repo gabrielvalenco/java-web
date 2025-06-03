@@ -173,8 +173,11 @@ public class LoanServlet extends HttpServlet {
                     loan.setUser(user);
                     loan.setBook(book);
                     loan.setLoanDate(loanDate);
-                    // Usando dueDate como data esperada de devolução
-                    loan.setReturnDate(dueDate);
+                    // Set due date (expected return date)
+                    loan.setDueDate(dueDate);
+                    // Set actual return date if provided
+                    loan.setReturnDate(returnDate);
+                    loan.setReturned(returnDate != null);
                     
                     if ("update".equals(action)) {
                         loanDAO.update(loan);
