@@ -13,7 +13,6 @@ body {
     font-family: 'Roboto', 'Segoe UI', sans-serif;
     background-color: #f5f7fa;
     color: #333;
-    padding-top: 60px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -23,6 +22,7 @@ body {
     box-shadow: var(--shadow);
     background-color: var(--dark-color);
     padding: 0.8rem 1rem;
+    margin-bottom: 20px;
 }
 
 .navbar-brand {
@@ -71,16 +71,35 @@ body {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: var(--shadow);
+    margin-bottom: 2rem;
 }
 
 .table thead th {
     background-color: var(--dark-color);
     color: white;
-    border: none;
+    font-weight: 500;
+    border-bottom: none;
+}
+
+/* Remove underlines from table header links */
+.table thead th a {
+    text-decoration: none;
+    color: white;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(236, 240, 241, 0.5);
+}
+
+/* Fix dropdown menu visibility */
+.dropdown-menu {
+    z-index: 1060;
+}
+
+/* Fix button group in tables */
+.btn-group {
+    position: relative;
+    z-index: 5;
 }
 
 .btn {

@@ -15,7 +15,7 @@
         <p class="lead">Gerenciamento de empréstimos de livros</p>
     </div>
     <div class="col-md-6 text-end">
-        <a href="${pageContext.request.contextPath}/loans?action=new" class="btn btn-primary">
+        <a href="${pageContext.request.contextPath}/loans/new" class="btn btn-primary">
             <i class="fas fa-plus me-1"></i>Novo Empréstimo
         </a>
     </div>
@@ -127,35 +127,23 @@
                         </c:choose>
                     </td>
                     <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Ações
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li>
-                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/loans?action=view&id=${loan.id}">
-                                        <i class="fas fa-eye me-1"></i>Visualizar
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/loans?action=edit&id=${loan.id}">
-                                        <i class="fas fa-edit me-1"></i>Editar
-                                    </a>
-                                </li>
-                                <c:if test="${loan.returnDate == null}">
-                                    <li>
-                                        <a class="dropdown-item confirm-action" href="${pageContext.request.contextPath}/loans?action=return&id=${loan.id}" data-confirm-message="Confirmar devolução deste livro?">
-                                            <i class="fas fa-undo me-1"></i>Registrar Devolução
-                                        </a>
-                                    </li>
-                                </c:if>
-                                <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <a class="dropdown-item text-danger confirm-action" href="${pageContext.request.contextPath}/loans?action=delete&id=${loan.id}" data-confirm-message="Tem certeza que deseja excluir este empréstimo?">
-                                        <i class="fas fa-trash me-1"></i>Excluir
-                                    </a>
-                                </li>
-                            </ul>
+                        <div class="d-flex gap-1 flex-wrap">
+                            <a href="${pageContext.request.contextPath}/loans/view/${loan.id}" class="btn btn-sm btn-outline-primary" title="Visualizar">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="${pageContext.request.contextPath}/loans/edit/${loan.id}" class="btn btn-sm btn-outline-primary" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <c:if test="${loan.returnDate == null}">
+                                <a href="${pageContext.request.contextPath}/loans/return/${loan.id}" class="btn btn-sm btn-outline-success" title="Registrar Devolução">
+                                    <i class="fas fa-undo"></i>
+                                </a>
+                            </c:if>
+                            <a class="btn btn-sm btn-outline-danger confirm-action" 
+                               href="${pageContext.request.contextPath}/loans/delete/${loan.id}" 
+                               data-confirm-message="Tem certeza que deseja excluir este empréstimo?" title="Excluir">
+                                <i class="fas fa-trash"></i>
+                            </a>
                         </div>
                     </td>
                 </tr>
@@ -253,7 +241,7 @@
                 });
                 
                 const icon = this.querySelector('i');
-                icon.className = `fas fa-sort-${currentSortDirection === 'asc' ? 'up' : 'down'}`;
+                icon.className = currentSortDirection === 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down';
                 
                 // Sort the table
                 sortTable(columnName, currentSortDirection);
