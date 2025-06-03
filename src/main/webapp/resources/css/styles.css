@@ -1,0 +1,310 @@
+/* Main stylesheet for Library Management System */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    padding-top: 60px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    box-shadow: var(--shadow);
+    background-color: var(--dark-color);
+    padding: 0.8rem 1rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.navbar-dark .navbar-nav .active>.nav-link {
+    color: var(--secondary-color);
+}
+
+.content-wrapper {
+    flex: 1;
+    padding: 30px 0;
+}
+
+.card {
+    border-radius: 8px;
+    border: none;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background-color: rgba(52, 152, 219, 0.1);
+    border-bottom: 1px solid rgba(52, 152, 219, 0.2);
+    font-weight: 600;
+}
+
+/* Table styles */
+.table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.table thead th {
+    background-color: var(--dark-color);
+    color: white;
+    border: none;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(236, 240, 241, 0.5);
+}
+
+.btn {
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+.btn-success {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-success:hover {
+    background-color: #27ae60;
+    border-color: #27ae60;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
+}
+
+.badge {
+    padding: 0.5em 0.75em;
+    font-weight: 500;
+}
+
+.badge-success {
+    background-color: var(--secondary-color);
+}
+
+.badge-warning {
+    background-color: var(--warning-color);
+}
+
+.badge-danger {
+    background-color: var(--danger-color);
+}
+
+/* Dashboard cards */
+.dashboard-card {
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s;
+    height: 100%;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-card .card-body {
+    padding: 25px;
+}
+
+.dashboard-card .card-title {
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--dark-color);
+}
+
+.dashboard-card .stat-value {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.dashboard-card .stat-label {
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+.dashboard-card .stat-icon {
+    font-size: 4rem;
+    opacity: 0.2;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+/* Book card */
+.book-card {
+    height: 100%;
+    transition: transform 0.3s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+.book-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.book-card .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-card .card-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.book-card .card-text {
+    flex-grow: 1;
+}
+
+.book-card .btn {
+    margin-top: auto;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 30px 0;
+    margin-top: auto;
+}
+
+/* Animation classes */
+.fade-in {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Form styles */
+.form-control {
+    border-radius: 5px;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Status indicators */
+.status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.status-available {
+    background-color: var(--secondary-color);
+}
+
+.status-borrowed {
+    background-color: var(--warning-color);
+}
+
+.status-overdue {
+    background-color: var(--danger-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+    
+    .dashboard-card .stat-value {
+        font-size: 2rem;
+    }
+}
+
+/* Overdue row in loan list */
+tr.overdue {
+    background-color: rgba(231, 76, 60, 0.1) !important;
+}
+
+/* Search form */
+.search-form {
+    margin-bottom: 20px;
+}
+
+.search-form .form-control {
+    border-radius: 20px;
+    padding-left: 15px;
+}
+
+.search-form .btn {
+    border-radius: 20px;
+}
+
+/* Loader */
+.loader {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
